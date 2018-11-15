@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-8">
+      <div class="col-md-4">
         <img :src="product.image" :alt="product.name" class="img-fluid">
+      </div>
+      <div class="col-md-8">
         <h5>{{ product.name }}</h5>
         <p><span class="font-weight-bold">Category</span>: {{ product.category }}</p>
         <p class="text-danger font-weight-bold">${{product.price}}</p>
         <p>
           {{ product.description }}
         </p>
-        <button class="btn btn-outline-primary mb-5" @click="addToCart(product)">Buy Now</button>
       </div>
     </div>
   </div>
