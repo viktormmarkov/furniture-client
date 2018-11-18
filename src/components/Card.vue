@@ -5,7 +5,7 @@
             <img class="card-img-top" :src="product.image" :alt="product.name">
         </router-link>
         <h5 class="card-title text-info">{{ product.name }}</h5>
-        <p class="card-text text-danger">${{ product.price }}</p>
+        <p class="card-text text-danger">{{ product.price }} лв.</p>
     </div>
 </div>
 </template>

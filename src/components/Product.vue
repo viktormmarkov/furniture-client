@@ -7,9 +7,15 @@
       <div class="col-md-8">
         <h5>{{ product.name }}</h5>
         <p><span class="font-weight-bold">Category</span>: {{ product.category }}</p>
-        <p class="text-danger font-weight-bold">${{product.price}}</p>
+        <p class="text-danger font-weight-bold">{{product.price}} лв.</p>
         <p>
           {{ product.description }}
+        </p>
+        <p>
+          {{ product.vendor }}
+        </p>
+        <p>
+          <a :href="product.url">Виж оригинал</a>
         </p>
       </div>
     </div>
