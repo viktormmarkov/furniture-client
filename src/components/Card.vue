@@ -6,20 +6,30 @@
         </router-link>
         <h5 class="card-title text-info">{{ product.name }}</h5>
         <p class="card-text text-danger">{{ product.price }} лв.</p>
+        <div class="row" style="height:15px">
+            <div class="col-md-3 mb-1" v-for="color in colors" :key="color" v-bind:style="{ backgroundColor: color}">
+            </div>
+      </div>
     </div>
 </div>
 </template>
 
 <script>
-import mixins from '@/mixins/mixins';
+import mixins from "@/mixins/mixins";
+
 export default {
-    props: ['product'],
-    mixins: [mixins]
-}
+  data() {
+    return {
+      colors: ["#7c6155", "#dfd1c4", "#372920", "#c1b1af"]
+    };
+  },
+  props: ["product"],
+  mixins: [mixins]
+};
 </script>
 
 <style scoped>
 .card-title {
-        cursor: pointer;
-    }
+  cursor: pointer;
+}
 </style>
