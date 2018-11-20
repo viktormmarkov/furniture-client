@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Cards :products="products" />
+      <Cards :products="products" :filter="filter"/>
            <p class="text-center mb-0">{{currentPage+1 }} / {{ pages }}</p>
         <ul class="pagination justify-content-center">
             <li class="page-item" :class="{disabled: prevUrl === ''}">
