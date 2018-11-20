@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-3" v-for="product in filterItems(products)" :key="product._id">
+            <div class="col-md-4 mb-3" v-for="product in filterItems(products, filter)" :key="product._id">
                 <Card :product="product" />
             </div>
         </div>
@@ -18,8 +18,12 @@
             Card
         },
         methods: {
-            filterItems: (products) => {
-                return _.filter(products, () => true);
+            filterItems: (products, filter) => {
+                const min = _.min(filter);
+                const max = _.max(filter);
+                return _.filter(products, p => {
+                    return (p.price > (min || 0) && p.price < (max || 2000));
+                });
             }
         }
     
