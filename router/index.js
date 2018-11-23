@@ -3,7 +3,6 @@ import Products from '@/components/Products'
 import Product from '@/components/Product'
 import Category from '@/components/Category'
 import Checkout from '@/components/Checkout'
-import Thakyou from '@/components/Thakyou'
 const routes = [
     {
         path: '/',
@@ -27,13 +26,6 @@ const routes = [
         name: 'checkout',
         component: Checkout,
     },
-    {
-        path: '/thankyou',
-        name: 'thankyou',
-        component: Thakyou,
-    }
-
-
 ];
 
 const router = new VueRouter({
