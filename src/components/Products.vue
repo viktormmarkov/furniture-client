@@ -3,10 +3,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="form-control">
-                        <label for="price-picker">Price</label>
-                        <vue-slider id="price-picker" ref="slider" v-model="priceRange" v-bind="options"></vue-slider>
-                        <span class="small"> From {{priceRange[0]}}lv to {{priceRange[1]}}lv</span>
+                    <div class="form-vertical">
+                        <div class="form-control">
+                            <label for="price-picker">Price</label>
+                            <vue-slider id="price-picker" ref="slider" v-model="priceRange" v-bind="sliderOptions"></vue-slider>
+                            <span class="small"> From {{priceRange[0]}}lv to {{priceRange[1]}}lv</span>
+                        </div>
+                        <div class="form-control">
+                            <label class="typo__label">Vendor</label>
+                            <multiselect v-model="vendor" :options="vendorOptions" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="All Vendors" label="name" track-by="name" :preselect-first="true">
+                            </multiselect>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-9">
@@ -30,16 +37,18 @@
     import Cards from './Cards';
     import Api from '@/config/Api';
     import vueSlider from 'vue-slider-component';
+    import Multiselect from 'vue-multiselect'
     import _ from 'lodash';
     
     export default {
         components: {
             Cards,
-            vueSlider
+            vueSlider,
+            Multiselect
         },
         data() {
             return {
-                options: {
+                sliderOptions: {
                     min: 0,
                     max: 2000,
                     tooltip: 'hover',
@@ -47,6 +56,31 @@
                     minRange: 100
                 },
                 priceRange: [500, 2000],
+                vendor: {
+                    name: 'Vue.js',
+                    language: 'JavaScript'
+                },
+                vendorOptions: [{
+                        name: 'Vue.js',
+                        language: 'JavaScript'
+                    },
+                    {
+                        name: 'Rails',
+                        language: 'Ruby'
+                    },
+                    {
+                        name: 'Sinatra',
+                        language: 'Ruby'
+                    },
+                    {
+                        name: 'Laravel',
+                        language: 'PHP'
+                    },
+                    {
+                        name: 'Phoenix',
+                        language: 'Elixir'
+                    }
+                ],
                 products: [],
                 currentPage: '',
                 pages: '',
