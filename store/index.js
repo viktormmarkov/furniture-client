@@ -4,7 +4,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         cart: JSON.parse(localStorage.getItem('cart')) || [],
-        charge: {}
+        charge: {},
+        productFilter: {}
     },
     mutations:{
         setCart: (state, payload) => {
@@ -24,10 +25,19 @@ export default new Vuex.Store({
         },
         setCharge: (state, payload) => {
             state.charge = payload;
+        },
+        setProductFilter: (state, payload) => {
+            state.productFilter = payload;
+        }
+    },
+    actions: {
+        updateProductFilter: function ({commit}, filter) {
+            commit('setProductFilter', filter);
         }
     },
     getters: {
         getCart: state => state.cart,
-        getCharge: state => state.charge
+        getCharge: state => state.charge,
+        getProductFilter: state => state.productFilter
     }
 });

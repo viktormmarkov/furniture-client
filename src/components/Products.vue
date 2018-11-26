@@ -6,7 +6,7 @@
                     <FilterProduct></FilterProduct>
                 </div>
                 <div class="col-sm-9">
-                    <Cards :products="products" v-bind:filter="priceRange" />
+                    <Cards :products="products" />
                     <p class="text-center mb-0">{{currentPage+1 }} / {{ pages }}</p>
                     <ul class="pagination justify-content-center">
                         <li class="page-item" :class="{disabled: prevUrl === ''}">

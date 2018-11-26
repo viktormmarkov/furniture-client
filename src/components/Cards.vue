@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-3" v-for="product in filterItems(products, filter)" :key="product._id">
+            <div class="col-md-4 mb-3" v-for="product in filteredItems" :key="product._id">
                 <Card :product="product" />
             </div>
         </div>
@@ -17,16 +17,25 @@
         components: {
             Card
         },
-        methods: {
-            filterItems: (products, filter) => {
-                const min = _.min(filter);
-                const max = _.max(filter);
-                return _.filter(products, p => {
-                    return (p.price > (min || 0) && p.price < (max || 2000));
+        computed: {
+            productFilter: function() {
+                return this.$store.getters.getProductFilter;
+            },
+            filteredItems: function(products) {
+                const filter = this.$store.getters.getProductFilter;
+                const {
+                    minPrice,
+                    maxPrice,
+                    vendors
+                } = filter;
+                console.log(vendors);
+                return _.filter(this.products, p => {
+                    return (!minPrice || p.price > minPrice) &&
+                        (!maxPrice || p.price < maxPrice) && 
+                        (_.isEmpty(vendors) || _.includes(_.map(vendors, v => v.name), p.vendor));
                 });
             }
         }
-    
     }
 </script>
 
