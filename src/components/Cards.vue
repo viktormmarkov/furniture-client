@@ -28,7 +28,6 @@
                     maxPrice,
                     vendors
                 } = filter;
-                console.log(vendors);
                 return _.filter(this.products, p => {
                     return (!minPrice || p.price > minPrice) &&
                         (!maxPrice || p.price < maxPrice) && 

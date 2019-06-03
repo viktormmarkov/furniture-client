@@ -44,7 +44,6 @@ export default {
         checkout(e) {
             e.preventDefault();
             this.$router.push({ name: 'checkout' });
-            console.log(e);
         }
     }
 }
